@@ -1,0 +1,46 @@
+.navbar.navbar-default.navbar-fixed-top(style='padding-top: 6px;')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      if usuario  
+        a.navbar-brand(href="/inicio/"+usuario.id)
+          i.fas.fa-cube
+          | Legajo Docente FISI
+      else
+        a.navbar-brand(href="/inicio")  
+          i.fas.fa-cube
+          | Legajo Docente FISI
+    .collapse.navbar-collapse
+      //- ul.nav.navbar-nav
+      //-   li(class=(title === 'Inicio') ? 'active' : undefined)
+      //-     a(href='') Inicio
+        //- li(class=(title === 'API Examples') ? 'active' : undefined)
+        //-   a(href='/api') API Examples
+        //- li(class=(title === 'Contact') ? 'active' : undefined)
+        //-   a(href='/contact') Contact
+        //- li
+        //-   a(href='/status') Status
+      ul.nav.navbar-nav.navbar-right
+        if !usuario
+          
+          //- li(class=(title === 'Iniciar sesión') ? 'active' : undefined)
+          //-   a(href='/login') Iniciar sesión
+          //- li(class=(title === 'Crear cuenta') ? 'active' : undefined)
+          //-   a(href='/signup') Crear cuenta
+        else
+          li.dropdown(class=(title === 'Account Management') ? 'active' : undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              if usuario.foto
+                img(src=usuario.foto style='height: 55px;width: 44px;')
+              else
+                img(src=usuario.getProfilePicture(60))
+              span= usuario.email || usuario.id
+              i.caret
+            ul.dropdown-menu
+              li
+                a(href='/account/'+usuario.id) Mi cuenta
+              

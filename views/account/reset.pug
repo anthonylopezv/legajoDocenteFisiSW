@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  .col-sm-8.col-sm-offset-2
+    form(method='POST')
+      legend Recuperar contraseña
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        label(for='password') Nueva Contraseña
+        input.form-control(type='password', name='password', id='password', placeholder='Nueva contraseña', autofocus, required)
+      .form-group
+        label(for='confirm') Confirmar Contraseña
+        input.form-control(type='password', name='confirm', id='confirm', placeholder='Confirmar contraseña', required)
+      .form-group
+        button.btn.btn-primary.btn-reset(type='submit')
+          i.far.fa-keyboard.fa-sm
+          | Cambiar Contraseña
